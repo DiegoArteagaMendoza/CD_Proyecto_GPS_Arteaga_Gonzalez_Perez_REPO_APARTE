@@ -1,0 +1,9 @@
+# minikube/common/configmaps.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: shared-config
+  namespace: default
+data:
+  LOG_LEVEL: "info"
+  TIMEZONE: "America/Santiago"

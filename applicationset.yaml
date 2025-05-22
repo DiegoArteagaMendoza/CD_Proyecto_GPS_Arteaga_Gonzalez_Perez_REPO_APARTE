@@ -1,0 +1,50 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: all-apps-default
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - name: db-farmacia
+            values:
+              namespace: default
+          - name: db-inventario
+            values:
+              namespace: default
+          - name: db-trabajador
+            values:
+              namespace: default
+          - name: ms-farmacia
+            values:
+              namespace: default
+          - name: ms-inventario
+            values:
+              namespace: default
+          - name: ms-trabajador
+            values:
+              namespace: default
+          - name: ms-inventario-front
+            values:
+              namespace: default
+  template:
+    metadata:
+      name: "{{ .Name }}"
+      labels:
+        app.kubernetes.io/managed-by: argocd-applicationset
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/tu-usuario/tu-repo.git 
+        targetRevision: HEAD
+        path: minikube/{{ .Name }}
+      destination:
+        server: https://kubernetes.default.svc 
+        namespace: "{{ .Values.namespace }}"
+      syncPolicy:
+        automated:
+          selfHeal: true
+          prune: true
+        syncOptions:
+          - CreateNamespace=true
