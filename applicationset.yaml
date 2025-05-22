@@ -36,8 +36,8 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/tu-usuario/tu-repo.git 
-        targetRevision: HEAD
+        repoURL: https://github.com/DiegoArteagaMendoza/CD_Proyecto_GPS_Arteaga_Gonzalez_Perez_REPO_APARTE.git
+        targetRevision: main
         path: minikube/{{ .Name }}
       destination:
         server: https://kubernetes.default.svc 
