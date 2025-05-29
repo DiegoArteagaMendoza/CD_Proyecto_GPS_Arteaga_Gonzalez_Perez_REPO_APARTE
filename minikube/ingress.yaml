@@ -4,9 +4,7 @@ metadata:
   name: backend-ingress
   namespace: backend
   annotations:
-    # Indicar que use el controller nginx
     kubernetes.io/ingress.class: "nginx"
-    # CORS / timeouts / cabeceras
     nginx.ingress.kubernetes.io/cors-allow-origin: "*"
     nginx.ingress.kubernetes.io/proxy-connect-timeout: "300"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "300"
@@ -20,7 +18,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: proyectoGPS.backend.local
+  - host: proyectogps.backend.local       # <-- todo en minúsculas
     http:
       paths:
       - path: /inventario
