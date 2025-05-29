@@ -4,51 +4,54 @@ metadata:
   name: backend-ingress
   namespace: backend
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    # Indicar que use el controller nginx
+    kubernetes.io/ingress.class: "nginx"
+    # CORS / timeouts / cabeceras
     nginx.ingress.kubernetes.io/cors-allow-origin: "*"
-    # Nuevas anotaciones críticas:
     nginx.ingress.kubernetes.io/proxy-connect-timeout: "300"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "300"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "300"
     nginx.ingress.kubernetes.io/server-snippet: |
-      proxy_set_header Host $host;
-      proxy_set_header X-Real-IP $remote_addr;
-      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header Host              $host;
+      proxy_set_header X-Real-IP         $remote_addr;
+      proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
       proxy_set_header X-Forwarded-Proto $scheme;
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
+  ingressClassName: nginx
   rules:
-  - http:  # Elimina 'host: localhost' para desarrollo
+  - host: proyectoGPS.backend.local
+    http:
       paths:
-      - path: /inventario/?(.*)
+      - path: /inventario
         pathType: Prefix
         backend:
           service:
-            name: ms-inventario-svc  # Nombre corregido
+            name: ms-inventario-svc
             port:
               number: 8002
-      - path: /trabajador/?(.*)
+      - path: /trabajador
         pathType: Prefix
         backend:
           service:
             name: ms-trabajador
             port:
               number: 8003
-      - path: /usuariocliente/?(.*)
+      - path: /usuariocliente
         pathType: Prefix
         backend:
           service:
             name: ms-usuariocliente
             port:
               number: 8004
-      - path: /venta/?(.*)
+      - path: /venta
         pathType: Prefix
         backend:
           service:
             name: ms-venta
             port:
               number: 8005
-      - path: /farmacia/?(.*)
+      - path: /farmacia
         pathType: Prefix
         backend:
           service:
