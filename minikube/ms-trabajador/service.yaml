@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ms-trabajador
+  namespace: backend
 spec:
   type: NodePort 
   selector:
