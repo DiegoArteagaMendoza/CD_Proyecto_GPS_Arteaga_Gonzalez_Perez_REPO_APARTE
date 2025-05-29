@@ -5,16 +5,16 @@ metadata:
   namespace: backend
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/cors-allow-origin: "*"  # Habilita CORS
 spec:
   rules:
-  - host: localhost  # Usa un dominio real en producción
-    http:
+  - http:  # Elimina 'host: localhost' para desarrollo
       paths:
       - path: /inventario/?(.*)
         pathType: Prefix
         backend:
           service:
-            name: ms-inventario
+            name: ms-inventario-svc  # Nombre corregido
             port:
               number: 8002
       - path: /trabajador/?(.*)
