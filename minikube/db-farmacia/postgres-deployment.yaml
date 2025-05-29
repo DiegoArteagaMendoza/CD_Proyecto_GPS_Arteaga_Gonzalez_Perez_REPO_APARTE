@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-farmacia
+  namespace: database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres-farmacia
+  template:
+    metadata:
+      labels:
+        app: postgres-farmacia
+    spec:
+      containers:
+        - name: postgres-farmacia
+          image: diegoarteagamendoza2002/db-farmacia:latest
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_DB
+              value: "db-farmacia"
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials-farmacia
+                  key: username
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials-farmacia
+                  key: password
+          volumeMounts:
+            - name: postgres-storage-farmacia
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: postgres-storage-farmacia
+          persistentVolumeClaim:
+            claimName: postgres-pvc-farmacia
