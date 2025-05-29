@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: ms-usuariocliente
-          image: "diegoarteagamendoza2002/ms-usuariocliente:1.0.3"
+          image: "diegoarteagamendoza2002/ms-usuariocliente:1.0.4"
           ports:
             - containerPort: 8004
