@@ -1,11 +1,20 @@
-apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: backend-ingress
   namespace: backend
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
-    nginx.ingress.kubernetes.io/cors-allow-origin: "*"  # Habilita CORS
+    nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+    # Nuevas anotaciones críticas:
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "300"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "300"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "300"
+    nginx.ingress.kubernetes.io/server-snippet: |
+      proxy_set_header Host $host;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $scheme;
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   rules:
   - http:  # Elimina 'host: localhost' para desarrollo
