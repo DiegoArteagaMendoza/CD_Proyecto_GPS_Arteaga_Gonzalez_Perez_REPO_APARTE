@@ -11,5 +11,4 @@ spec:
     - protocol: TCP
       port: 8004
       targetPort: 8004
-      nodePort: 30084   # Puerto externo accesible
   # loadbalancer

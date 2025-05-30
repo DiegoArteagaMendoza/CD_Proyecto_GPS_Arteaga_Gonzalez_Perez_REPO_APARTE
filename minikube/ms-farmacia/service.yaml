@@ -11,4 +11,3 @@ spec:
     - protocol: TCP
       port: 8006
       targetPort: 8006
-      nodePort: 30086
