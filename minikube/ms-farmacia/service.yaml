@@ -4,7 +4,7 @@ metadata:
   name: ms-farmacia
   namespace: backend
 spec:
-  type: NodePort 
+  type: ClusterIP 
   selector:
     app: ms-farmacia
   ports:

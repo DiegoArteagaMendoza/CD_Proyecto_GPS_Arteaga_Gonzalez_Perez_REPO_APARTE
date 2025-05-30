@@ -4,7 +4,7 @@ metadata:
   name: ms-venta
   namespace: backend
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: ms-venta
   ports:
