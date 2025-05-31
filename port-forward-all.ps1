@@ -28,3 +28,8 @@ foreach ($service in $services.GetEnumerator()) {
     # Write-Host "Abriendo $url en el navegador..." -ForegroundColor Cyan
     # Start-Process $url
 }
+
+# comandos de ejecucion en powershell
+# Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+# .\port-forward-all.ps1
+# Todo en la altura de donde se encuentra este archivo
