@@ -7,7 +7,7 @@ metadata:
   annotations:
     prometheus.io/scrape: "true"
     prometheus.io/path: "/metrics"  # La ruta que configuraste en Django (urls.py)
-    prometheus.io/port: "8000"    # El puerto en el que tu app Django corre DENTRO del pod y expone /metrics
+    prometheus.io/port: "8002"    # El puerto en el que tu app Django corre DENTRO del pod y expone /metrics
   #------- y aplicarlo con kubectl apply -f service.yaml dentro de la carpeta ms-invetairo
 spec:
   type: ClusterIP
