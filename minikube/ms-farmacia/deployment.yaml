@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: ms-farmacia
-          image: "diegoarteagamendoza2002/ms-farmacia:1.0.5"
+          image: "diegoarteagamendoza2002/ms-farmacia:1.0.6"
           ports:
             - containerPort: 8006
