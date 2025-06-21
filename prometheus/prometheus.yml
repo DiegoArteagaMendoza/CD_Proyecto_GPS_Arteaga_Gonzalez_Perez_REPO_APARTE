@@ -2,6 +2,10 @@ global:
   scrape_interval: 15s
 
 scrape_configs:
-  - job_name: 'node-app'
+  - job_name: 'ms-farmacia'
     static_configs:
-      - targets: ['https://ms-farmacia-production-c583.up.railway.app/metrics']
+      - targets: ['ms-farmacia-production.up.railway.app']
+
+  - job_name: 'ms-inventario'
+    static_configs:
+      - targets: ['ms-inventario-production.up.railway.app']
