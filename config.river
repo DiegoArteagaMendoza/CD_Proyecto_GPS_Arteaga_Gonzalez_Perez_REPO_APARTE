@@ -1,0 +1,9 @@
+prometheus.scrape "ms_farmacia" {
+  targets = ["https://ms-farmacia-production.up.railway.app/metrics"]
+}
+
+prometheus.remote_write "prometheus" {
+  endpoint {
+    url = "http://prometheus:9090/api/v1/write"
+  }
+}
