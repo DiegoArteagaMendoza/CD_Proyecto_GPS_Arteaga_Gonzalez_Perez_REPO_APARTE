@@ -11,54 +11,44 @@ global:
 # Here it's Prometheus itself.
 scrape_configs:
   # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
-  - job_name: 'prometheus'
+  # - job_name: 'prometheus'
 
-    # Override the global default and scrape targets from this job every 5 seconds.
-    scrape_interval: 5s
+  #   # Override the global default and scrape targets from this job every 5 seconds.
+  #   scrape_interval: 5s
 
-    static_configs:
-      - targets: ['localhost:9090']
+  #   static_configs:
+  #     - targets: ['localhost:9090']
   
-  - job_name: 'demo_application'
-    scrape_interval: 5s
-    static_configs:
-      - targets: ['demo.do.prometheus.io:9090']
+  # - job_name: 'demo_application'
+  #   scrape_interval: 5s
+  #   static_configs:
+  #     - targets: ['demo.do.prometheus.io:9090']
 
   - job_name: 'ms-farmacia'
-    metrics_path: '/metrics/'
+    metrics_path: '/metrics'
     static_configs:
       - targets: ['ms-farmacia-production.up.railway.app']
 
   - job_name: 'ms-inventario'
-    metrics_path: '/metrics/'
+    metrics_path: '/metrics'
     scheme: 'https'
     static_configs:
       - targets: ['ms-inventario-production-98de.up.railway.app']
 
   - job_name: 'ms-trabajador'
-    metrics_path: '/metrics/'
+    metrics_path: '/metrics'
     scheme: 'https'
     static_configs:
       - targets: ['ms-trabajador-production.up.railway.app']
 
   - job_name: 'ms-usuariocliente'
-    metrics_path: '/metrics/'
+    metrics_path: '/metrics'
     scheme: 'https'
     static_configs:
       - targets: ['ms-usuariocliente-production.up.railway.app']
 
   - job_name: 'ms-venta'
-    metrics_path: '/metrics/'
+    metrics_path: '/metrics'
     scheme: 'https'
     static_configs:
       - targets: ['ms-venta-production.up.railway.app']
-
-  # - job_name: 'postgres'
-  #   scrape_interval: 5s
-  #   static_configs:
-  #     - targets: ['localhost:9187']
-
-  # - job_name: 'mysql'
-  #   scrape_interval: 5s
-  #   static_configs:
-  #     - targets: ['localhost:9104']
