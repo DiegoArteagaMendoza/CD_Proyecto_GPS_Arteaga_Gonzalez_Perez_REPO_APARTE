@@ -8,4 +8,16 @@ scrape_configs:
 
   - job_name: 'ms-inventario'
     static_configs:
-      - targets: ['ms-inventario-production.up.railway.app']
+      - targets: ['ms-inventario-production-98de.up.railway.app']
+
+  - job_name: 'ms-trabajador'
+    static_configs:
+      - targets: ['ms-trabajador-production.up.railway.app']
+
+  - job_name: 'ms-usuariocliente'
+    static_configs:
+      - targets: ['ms-usuariocliente-production.up.railway.app']
+
+  - job_name: 'ms-venta'
+    static_configs:
+      - targets: ['ms-venta-production.up.railway.app']
