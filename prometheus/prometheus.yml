@@ -15,13 +15,19 @@ scrape_configs:
       - targets: ['ms-inventario-production-98de.up.railway.app']
 
   - job_name: 'ms-trabajador'
+    metrics_path: '/metrics/'
+    scheme: 'https'
     static_configs:
       - targets: ['ms-trabajador-production.up.railway.app']
 
   - job_name: 'ms-usuariocliente'
+    metrics_path: '/metrics/'
+    scheme: 'https'
     static_configs:
       - targets: ['ms-usuariocliente-production.up.railway.app']
 
   - job_name: 'ms-venta'
+    metrics_path: '/metrics/'
+    scheme: 'https'
     static_configs:
       - targets: ['ms-venta-production.up.railway.app']
